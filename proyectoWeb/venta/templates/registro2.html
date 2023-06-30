@@ -1,0 +1,302 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registro</title>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Original-StreetWear</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/css/bootstrap.min.css" />
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@200&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
+    <script src="js/script.js"></script>
+</head>
+
+<body>
+    <header id="header1">
+        <nav class="navbar navbar-expand-lg bg-body-tertiary" data-bs-theme="dark">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="{% url 'index' %}">
+                    <img src="{% static 'img/LogoOficial2.png' %}" alt="Logo" width="30" height="24" 
+                        class="d-inline-block align-text-top" />
+                    Original-StreetWear
+                </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                    aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" href="{% url 'index' %}">Inicio</a>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                                aria-expanded="false">
+                                Hombre
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li>
+                                    <a class="dropdown-item" href="{% url 'sec' %}">Poleras</a>
+                                </li>
+                                <li>
+                                    <a class="dropdown-item" href="{% url 'sec' %}">Polerones</a>
+                                </li>
+                                <li>
+                                    <a class="dropdown-item" href="{% url 'shortsH' %}">Shorts</a>
+                                </li>
+                                <li>
+                                    <a class="dropdown-item" href="{% url 'sec' %}">Pantalones</a>
+                                </li>
+                                <li>
+                                    <hr class="dropdown-divider" />
+                                </li>
+                                <li>
+                                    <a class="dropdown-item" href="{% url 'sec' %}">Hombre</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="{% url 'sec' %}" role="button" data-bs-toggle="dropdown"
+                                aria-expanded="false">
+                                Mujer
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li>
+                                    <a class="dropdown-item" href="{% url 'sec' %}">Poleras</a>
+                                </li>
+                                <li>
+                                    <a class="dropdown-item" href="{% url 'sec' %}">Polerones</a>
+                                </li>
+                                <li>
+                                    <a class="dropdown-item" href="{% url 'sec' %}">Pantalones</a>
+                                </li>
+                                <li>
+                                    <hr class="dropdown-divider" />
+                                </li>
+                                <li>
+                                    <a class="dropdown-item" href="{% url 'sec' %}">Mujer</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" href="{% url 'sec' %}">Accesorios</a>
+                        </li>
+                    </ul>
+                    <a href="{% url 'login' %}" class="btn"><i class="bi bi-person-circle"></i> Mi Cuenta</a>
+                    <a href="{% url 'sec' %}" class="btn"><i class="bi bi-cart4"></i> Carrito</a>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+
+
+    <!-------- Zona registro ---------->
+
+    <div class="containerR">
+        <div class="row">
+            <form>
+                <h1>Registro de cuenta</h1>
+                <div class="form-group">
+                    <label for="nombre">Nombre</label>
+                    <input type="text" class="form-control" id="nombre" name="nombre">
+                    <p id="valida_nombre"></p>
+                </div>
+                <div class="form-group">
+                    <label for="apellido">Apellido</label>
+                    <input type="text" class="form-control" id="apellido" name="apellido">
+                    <p id="valida_apellido"></p>
+                </div>
+                <div class="form-group">
+                    <label for="correo">Correo Electrónico</label>
+                    <input type="email" class="form-control" id="correo" name="correo">
+                    <p id="valida_correo"></p>
+                </div>
+                <div class="form-group">
+                    <label for="password">Contraseña</label>
+                    <input type="password" class="form-control" id="password" name="password">
+                    <p id="valida_password"></p>
+                </div>
+                <button type="button" onclick="validar()">Registrarse</button>
+            </form>
+        </div>
+    </div>
+    <br>
+
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"
+        integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.min.js"
+        integrity="sha384-cuYeSxntonz0PPNlHhBs68uyIAVpIIOZZ5JqeqvYYIcEL727kskC66kF92t6Xl2V"
+        crossorigin="anonymous"></script>
+    <script src="js/script.js"></script>
+
+
+
+    <!--------------- Fin zona registro --------------------->
+
+
+
+
+    <!--Footer-->
+
+    <footer id="footerprincipal">
+        <!-- Seccion: Redes Sociales -->
+        <div class="d-flex justify-content-center justify-content-lg-between p-4 border-bottom">
+            <!-- Izquierda -->
+            <div class="me-5 d-none d-lg-block">
+                <span>Para saber mas de nosotros aqui tienes nuestras redes:</span>
+            </div>
+            <!-- Izquierda -->
+
+            <!-- Derecha -->
+            <div>
+                <a href="https://es-la.facebook.com/" class="me-4 text-reset">
+                    <i class="bi bi-facebook"></i>
+                </a>
+                <a href="https://twitter.com/home" class="me-4 text-reset">
+                    <i class="bi bi-twitter"></i>
+                </a>
+                <a href="https://www.youtube.com/" class="me-4 text-reset">
+                    <i class="bi bi-youtube"></i>
+                </a>
+                <a href="https://www.instagram.com/" class="me-4 text-reset">
+                    <i class="bi bi-instagram"></i>
+                </a>
+                <a href="https://cl.linkedin.com/" class="me-4 text-reset">
+                    <i class="bi bi-linkedin"></i>
+                </a>
+                <a href="https://github.com/" class="me-4 text-reset">
+                    <i class="bi bi-github"></i>
+                </a>
+            </div>
+            <!-- Derecha -->
+        </div>
+        <!-- Seccion: Redes Sociales -->
+
+        <!-- Seccion: Links  -->
+        <section class="">
+            <div class="container text-center text-md-start mt-5">
+                <!-- Grid row -->
+                <div class="row mt-3">
+                    <!-- Grid column -->
+                    <div class="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4">
+                        <!-- Content -->
+                        <h6 class="text-uppercase fw-bold mb-4">
+                            <i class="fas fa-gem me-3"></i>Original-StreetWear
+                        </h6>
+                        <p>
+                            Para cualquier tipo de consulta o duda importante, estaremos
+                            disponibles lo mas rápido posible para responderte.
+                        </p>
+                    </div>
+                    <!-- Columna -->
+
+                    <!-- Columna -->
+                    <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mb-4">
+                        <!-- Links -->
+                        <h6 class="text-uppercase fw-bold mb-4">Productos</h6>
+                        <p>
+                            <a href="{% url 'shortsH' %}" class="text-reset">Shorts</a>
+                        </p>
+                        <p>
+                            <a href="{% url 'sec' %}" class="text-reset">Poleras</a>
+                        </p>
+                        <p>
+                            <a href="{% url 'sec' %}" class="text-reset">Accesorios</a>
+                        </p>
+                        <p>
+                            <a href="{% url 'sec' %}" class="text-reset">Más</a>
+                        </p>
+                    </div>
+                    <!-- Columna -->
+
+                    <!-- Columna -->
+                    <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mb-4">
+                        <!-- Links -->
+                        <h6 class="text-uppercase fw-bold mb-4">Links útiles</h6>
+                        <p>
+                            <a href="{% url 'sec' %}" class="text-reset">Politicas de Envio</a>
+                        </p>
+                        <p>
+                            <a href="{% url 'sec' %}" class="text-reset">Cambios y Devoluciones</a>
+                        </p>
+                        <p>
+                            <a href="{% url 'sec' %}" class="text-reset">Terminos de Servicio</a>
+                        </p>
+                        <p>
+                            <a href="https://api.whatsapp.com/send?phone=931045972&text=Hola,tengounproblemamepuedesayudar?"
+                                class="text-reset">Whatsapp</a>
+                        </p>
+                        <p>
+                            <a href="{% url 'sec' %}" class="text-reset">Zonas de Envio</a>
+                        </p>
+                    </div>
+                    <!-- Columna -->
+
+                    <!-- Columna -->
+                    <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4">
+                        <!-- Links -->
+                        <h6 class="text-uppercase fw-bold mb-4">Contacto</h6>
+                        <p>
+                            <i class="fas fa-home me-3"></i> Viña del mar, VM 1930000, CL
+                        </p>
+                        <p>
+                            <i class="fas fa-envelope me-3"></i>
+                            ORStreatwear@gmail.com
+                        </p>
+                        <p><i class="fas fa-phone me-3"></i> + 56 975 267 37</p>
+                        <p><i class="fas fa-print me-3"></i> + 56 982 682 89</p>
+                    </div>
+                    <!-- Columna -->
+                </div>
+                <!-- Fila -->
+            </div>
+        </section>
+        <!-- Seccion: Links  -->
+
+        <!-- Copyright -->
+        <div class="text-center p-4">
+            © 2023 Copyright:
+            <a class="text-reset fw-bold" href="{% url 'index' %}">ORStreatwear.com</a>
+        </div>
+        <!-- Copyright -->
+    </footer>
+
+    <!--Chat en vivo-->
+    <script type="text/javascript">
+        var Tawk_API = Tawk_API || {}, Tawk_LoadStart = new Date();
+        (function () {
+            var s1 = document.createElement("script"), s0 = document.getElementsByTagName("script")[0];
+            s1.async = true;
+            s1.src = 'https://embed.tawk.to/645513886a9aad4bc5791a8a/1gvm58j8i';
+            s1.charset = 'UTF-8';
+            s1.setAttribute('crossorigin', '*');
+            s0.parentNode.insertBefore(s1, s0);
+        })();
+    </script>
+    
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
+    <script src="{% static 'js/script.js' %}"></script>
+</body>
+
+</html>
