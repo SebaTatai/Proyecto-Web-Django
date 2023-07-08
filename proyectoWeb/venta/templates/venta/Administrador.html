@@ -116,8 +116,7 @@
                     <td>{{tmp.precio}}
                     <td>{{tmp.cantidad_stock}}
                     <td>{{tmp.codigo_categoria}}
-                    <td><a href="{% url 'EliminarProducto'  pk=tmp.codigo_producto %}">Eliminar</a></td>
-                    <td><a href="{% url 'ModificarProducto' pk=tmp.codigo_producto %}">Modificar</a></td>
+                    
                 </tr>
                 {% endfor %}
             {% endif %}
