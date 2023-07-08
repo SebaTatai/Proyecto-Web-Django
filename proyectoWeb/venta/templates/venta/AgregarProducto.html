@@ -96,20 +96,21 @@
     </header>
     <center>
         <br>
-        <h6>Agregar Producto</h6>
+        <h6>Editar Productos</h6>
         <form action="" method="POST">
             {% csrf_token %}
-            <pre>Nombre: <input type="text" name="nombre"></pre>
-            <pre>Descripcion: <input type="text" name="descripcion"></pre>
-            <pre>Precio: <input type="number" name="apePat"></pre>
-            <pre>Stock: <input type="number" name="apeMat"></pre>
-            <pre>Categoria: <select name="categoria">
+            
+            <pre>Codigo Producto:  <input type="text"   name="codigo_producto"></pre>
+            <pre>Nombre:           <input type="text"   name="nombre"></pre>
+            <pre>Descripcion:      <input type="text"   name="descripcion"></pre>
+            <pre>Precio:           <input type="text"   name="precio"></pre>
+            <pre>Stock:            <input type="text"   name="cantidad_stock"></pre>
+            <pre>Categoria:        <select              name="categoria">
             {% for tmp in categorias %}
                 <option value="{{tmp.codigo_categoria}}">{{tmp.categoria}}</option>
             {% endfor %}
-        </select>
-        </pre>
-            <input type="submit" value="Agregar">
+            </select></pre>
+            <input type="submit" name="opcion" value="Agregar">
             <a href="{% url 'Administrador' %}">Volver</a>
         </form>
 

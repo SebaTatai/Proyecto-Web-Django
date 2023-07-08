@@ -1,11 +1,11 @@
 from django.db import models
 
 class Producto(models.Model):
-    codigo_producto  = models.AutoField(db_column='codigoProducto', primary_key=True)
+    codigo_producto  = models.CharField(db_column='codigoProducto', primary_key=True, max_length=25)
     nombre           = models.CharField(max_length=25)
     descripcion      = models.CharField(max_length=300)
-    precio           = models.IntegerField()
-    cantidad_stock   = models.IntegerField()
+    precio           = models.CharField(max_length=25)
+    cantidad_stock   = models.CharField(max_length=25)
     codigo_categoria = models.ForeignKey('Categoria', on_delete=models.CASCADE, db_column='codigoCategoria')
 
     def __str__(self):
@@ -24,14 +24,14 @@ class Usuario(models.Model):
         return str(self.nombre)+ " " + str(self.apellido_paterno) + " " + str(self.apellido_materno) + " - " + str(self.rut)
 
 class Categoria(models.Model):
-    codigo_categoria = models.AutoField(db_column='codigoCategoria', primary_key=True)
+    codigo_categoria = models.IntegerField(db_column='codigoCategoria', primary_key=True)
     categoria        = models.CharField(max_length=10)
 
     def __str__(self):
         return str(self.codigo_categoria) + " - " + str(self.categoria) 
 
 class Carrito(models.Model):
-    codigo_carrito  = models.AutoField(db_column='codigoCarrito', primary_key=True)
+    codigo_carrito  = models.IntegerField(db_column='codigoCarrito', primary_key=True)
     rut             = models.ForeignKey('Usuario', on_delete=models.CASCADE, db_column='rutUsuario')
     codigo_producto = models.ForeignKey('Producto', on_delete=models.CASCADE, db_column='codigoProducto')
     cantidad        = models.IntegerField()

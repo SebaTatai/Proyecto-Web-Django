@@ -100,29 +100,33 @@
         <h1>Lista Productos</h1>
         <table border="1">
             {% if productos %}
-            <th>Codigo</th>
-            <th>Nombre</th>
-            <th>Descripcion</th>
-            <th>Precio</th>
-            <th>Stock</th>
-            <th>Categoria</th>
-            {% for tmp in productos %}
-            <tr>
-                <td>{{tmp.codigo_producto}}</td>
-                <td>{{tmp.nombre}}</td>
-                <td>{{tmp.descripcion}}</td>
-                <td>{{tmp.precio}}</td>
-                <td>{{tmp.cantidad_stock}}</td>
-                <td>{{tmp.codigo_categoria}}</td>
-                
-
-            </tr>
-            {% endfor %}
+                <th>Codigo</th>
+                <th>Nombre</th>
+                <th>Descripcion</th>
+                <th>Precio</th>
+                <th>Stock</th>
+                <th>Categoria</th>
+                <th>Modificar</th>
+                <th>Eliminar</th>
+                {% for tmp in productos %}
+                <tr>
+                    <td>{{tmp.codigo_producto}}
+                    <td>{{tmp.nombre}}
+                    <td>{{tmp.descripcion}}
+                    <td>{{tmp.precio}}
+                    <td>{{tmp.cantidad_stock}}
+                    <td>{{tmp.codigo_categoria}}
+                    <td><a href="{% url 'EliminarProducto'  pk=tmp.codigo_producto %}">Eliminar</a></td>
+                    <td><a href="{% url 'ModificarProducto' pk=tmp.codigo_producto %}">Modificar</a></td>
+                </tr>
+                {% endfor %}
             {% endif %}
         </table>
         <br>
         <br>
-        <a href="{% url 'AgregarProducto' %}">Agregar Producto</a>
+        <button type="button">
+            <a href="{% url 'AgregarProducto' %}">Agregar Producto</a>
+        </button>
     </center>
 
     <footer id="footerprincipal">
