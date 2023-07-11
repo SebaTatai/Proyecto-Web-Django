@@ -89,7 +89,7 @@
                         </li>
                     </ul>
                     <a href="{% url 'login' %}" class="btn"><i class="bi bi-person-circle"></i> Mi Cuenta</a>
-                    <a href="{% url 'sec' %}" class="btn"><i class="bi bi-cart4"></i> Carrito</a>
+                    <a href="{% url 'carrito' %}" class="btn"><i class="bi bi-cart4"></i> Carrito</a>
                 </div>
             </div>
         </nav>
@@ -98,35 +98,59 @@
     <center>
         <br>
         <h1>Lista Productos</h1>
-        <table border="1">
+        <center>
+            <form class="d-flex" role="search" method="get">
+                <input class="form-control me-2" type="search" placeholder="Buscar" name="buscar">
+                <button class="btn btn-outline-secondary buttonBus" type="submit">Buscar</button>
+            </form>
+        </center>
+        <table action="{% url 'Administrador' %}" method="GET" class="table table-dark table-striped"> 
             {% if productos %}
-                <th>Codigo</th>
-                <th>Nombre</th>
-                <th>Descripcion</th>
-                <th>Precio</th>
-                <th>Stock</th>
-                <th>Categoria</th>
-                <th>Modificar</th>
-                <th>Eliminar</th>
-                {% for tmp in productos %}
-                <tr>
-                    <td>{{tmp.codigo_producto}}
-                    <td>{{tmp.nombre}}
-                    <td>{{tmp.descripcion}}
-                    <td>{{tmp.precio}}
-                    <td>{{tmp.cantidad_stock}}
-                    <td>{{tmp.codigo_categoria}}
-                    
-                </tr>
-                {% endfor %}
+            <th>Codigo</th>
+            <th>Nombre</th>
+            <th>Descripcion</th>
+            <th>Precio</th>
+            <th>Stock</th>
+            <th>Categoria</th>
+            <th>Acciones</th>
+    
+            {% for producto in productos %}
+            <tr>
+                <td>{{ producto.codigo_producto }}</td>
+                <td>{{ producto.nombre }}</td>
+                <td>{{ producto.descripcion }}</td>
+                <td>{{ producto.precio }}</td>
+                <td>{{ producto.cantidad_stock }}</td>
+                <td>{{ producto.codigo_categoria }}</td>
+                <td>
+                    <a href="{% url 'modificar_producto' producto.codigo_producto %}" class="btn btn-info btn-sn">Modificar</a>
+                    <a href="{% url 'eliminar_producto' producto.codigo_producto %}" class="btn btn-danger btn-sn">Eliminar</a>
+                    {% comment %} <form action="{% url 'eliminar_producto' producto.codigo_producto %}" method="POST" style="display:inline;">
+                        {% csrf_token %}
+                        <input type="submit" value="Eliminar">
+                    </form> {% endcomment %}
+                </td>
+            </tr>
+            {% endfor %}
             {% endif %}
         </table>
-        <br>
-        <br>
-        <button type="button">
-            <a href="{% url 'AgregarProducto' %}">Agregar Producto</a>
-        </button>
+        <div id="idMensajes">
+            {% if mensaje %}
+            {{mensaje}}
+            {% endif %}
+        </div>
     </center>
+
+    <center>
+        <h3>
+            <a href="{% url 'AdministradorCategorias' %}">Lista Categorias</a>
+        </h3>
+        <h3>
+            <a href="{% url 'AgregarProducto' %}">Agregar Producto</a>
+        </h3>
+    </center>
+
+
 
     <footer id="footerprincipal">
         <!-- Seccion: Redes Sociales -->

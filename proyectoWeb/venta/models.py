@@ -4,9 +4,10 @@ class Producto(models.Model):
     codigo_producto  = models.CharField(db_column='codigoProducto', primary_key=True, max_length=25)
     nombre           = models.CharField(max_length=25)
     descripcion      = models.CharField(max_length=300)
-    precio           = models.CharField(max_length=25)
+    precio           = models.IntegerField()
     cantidad_stock   = models.CharField(max_length=25)
     codigo_categoria = models.ForeignKey('Categoria', on_delete=models.CASCADE, db_column='codigoCategoria')
+    imagen           = models.ImageField(null=True, blank=True)
 
     def __str__(self):
         return str(self.nombre) + " - " + str(self.codigo_producto)

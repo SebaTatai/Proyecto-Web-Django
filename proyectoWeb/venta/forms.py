@@ -1,5 +1,6 @@
-from .models import Gategoria, Producto
+from .models import Categoria, Producto
 from django.forms import ModelForm
+from django import forms
 
 class CategoriaForm(ModelForm):
     class Meta:
@@ -7,8 +8,8 @@ class CategoriaForm(ModelForm):
         fields = ["categoria",]
         labels = {"categoria":"Categoria",}
 
-class ProductoForm(ModelForm):
+class ProductoForm(forms.ModelForm):
+    
     class Meta:
         model = Producto
-        fields = ["producto",]
-        labels = {"producto":"Producto",}
+        fields = '__all__'
